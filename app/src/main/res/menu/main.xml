@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+   <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/increment"
+        android:orderInCategory="100"
+        android:title="Increment"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/logout"
+        android:orderInCategory="100"
+        android:title="Logout"
+        app:showAsAction="never" />
+
+    <item
+     android:id="@+id/edit"
+     android:orderInCategory="100"
+     android:title="Edit"
+     android:icon="@drawable/edit_icon"
+     app:showAsAction="always"/>
+
+  <item
+     android:id="@+id/save"
+     android:orderInCategory="100"
+     android:title="Save"
+     android:icon="@drawable/ic_check_black_24dp"
+     app:showAsAction="always"/>
+
+
+
+    <item
+        android:id="@+id/notification"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="Notification"
+        android:icon="@drawable/ic_notifications_black_24dp"/>
+
+    <item
+        android:id="@+id/search_view"
+        android:title="search"
+        app:showAsAction="collapseActionView"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        android:icon="@drawable/search"/>
+
+</menu>
