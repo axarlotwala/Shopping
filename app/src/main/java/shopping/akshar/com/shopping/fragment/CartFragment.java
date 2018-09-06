@@ -25,6 +25,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,6 +54,9 @@ public class CartFragment extends Fragment {
     RecyclerView recycler_cart;
     TextView total_price;
     Button btn_change;
+    FirebaseAuth auth;
+    FirebaseUser user;
+
 
     SharedPreferences sharedPreferences;
 
@@ -75,8 +80,11 @@ public class CartFragment extends Fragment {
         total_price = view.findViewById(R.id.total_price);
         btn_change = view.findViewById(R.id.btn_change);
         cartmodels = new ArrayList<>();
-        sharedPreferences = getContext().getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
+
+
         cartView();
+        auth = FirebaseAuth.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
        /* show editetxt dialog on button click event*/
 
@@ -129,6 +137,8 @@ public class CartFragment extends Fragment {
                     for (int i = 0; i < response.length(); i++) {
                         try {
                             sharedPreferences = getContext().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+                            sharedPreferences.getString(KEY_USER_ID,user.getUid());
+
                             jsonObject = response.getJSONObject(i);
 
                                 Cartmodel cartmodel = new Cartmodel();
@@ -139,12 +149,6 @@ public class CartFragment extends Fragment {
                                 cartmodel.setCart_imageurl(jsonObject.getString("product_image"));
                                 cartmodel.setCart_date(jsonObject.getString("cart_date"));
                                 cartmodels.add(cartmodel);
-
-                                sharedPreferences.getString(cartmodel.getToken(),KEY_USER_ID);
-
-
-
-
 
 
                         } catch (JSONException e) {

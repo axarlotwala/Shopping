@@ -32,6 +32,7 @@ import shopping.akshar.com.shopping.fragment.CartFragment;
 import shopping.akshar.com.shopping.fragment.HomeFragment;
 import shopping.akshar.com.shopping.fragment.IncrementFragment;
 import shopping.akshar.com.shopping.fragment.ProfileFragment;
+import shopping.akshar.com.shopping.fragment.View_profileFragment;
 import shopping.akshar.com.shopping.utlis.PreferenseManager;
 
 public class MainActivity extends AppCompatActivity
@@ -146,6 +147,7 @@ public class MainActivity extends AppCompatActivity
             ft.replace(R.id.frame_main,new IncrementFragment());
             ft.addToBackStack(null);
             ft.commit();
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -166,7 +168,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_profile) {
             android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction ft = manager.beginTransaction();
-            ft.replace(R.id.frame_main,new ProfileFragment());
+            ft.replace(R.id.frame_main,new View_profileFragment());
             ft.addToBackStack(null);
             ft.commit();
         } else if (id == R.id.nav_cart){

@@ -13,7 +13,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:orientation="vertical">
 
@@ -28,111 +28,87 @@
             android:src="@drawable/bags"
             android:layout_gravity="center"
             app:civ_border_color="#FF000000"
-            app:civ_border_width="2dp" />
+            app:civ_border_width="2dp"
+            android:layout_margin="10dp"/>
 
             <!--name -->
-        <android.support.v7.widget.CardView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp">
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/name"
+        <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/et_name"
-                    style="@style/Base.V7.Widget.AppCompat.EditText"
+                    android:id="@+id/et_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Name"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:hint="User Name"
+                    android:inputType="text"
+                    android:layout_margin="10dp"/>
+
             </android.support.design.widget.TextInputLayout>
 
-        </android.support.v7.widget.CardView>
+        <!--Phone Number-->
 
-        <!--address-->
-
-        <android.support.v7.widget.CardView
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:hint="Phone Number"
+                android:inputType="number"
+                android:maxLength="10"
+                android:layout_margin="10dp"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <!--Address-->
+
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/address"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
             <EditText
                 android:id="@+id/et_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="address"
-                android:maxLines="3" />
+                android:singleLine="true"
+                android:hint="Address"
+                android:maxLines="3"
+                android:layout_margin="10dp"/>
+
         </android.support.design.widget.TextInputLayout>
 
-        </android.support.v7.widget.CardView>
+        <!--Pincode-->
 
-
-        <!--pincode-->
-
-        <android.support.v7.widget.CardView
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp">
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/pincode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/et_pincode"
+                android:id="@+id/et_pin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="pincode"
+                android:singleLine="true"
+                android:hint="Pincode"
                 android:inputType="number"
-                android:maxLength="6"
-                android:singleLine="true" />
+                android:layout_margin="10dp"/>
+
         </android.support.design.widget.TextInputLayout>
 
-        </android.support.v7.widget.CardView>
-
-        <!--phone no-->
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp">
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/et_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="phone no"
-                    android:inputType="number"
-                    android:maxLength="10"
-                    android:singleLine="true" />
-            </android.support.design.widget.TextInputLayout>
-
-
-        </android.support.v7.widget.CardView>
 
         <!--vaeryfy email address-->
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp">
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/tv_email"
@@ -140,65 +116,45 @@
                 android:layout_height="wrap_content"
                 android:text="email address"
                 android:padding="10dp"
+                android:gravity="center"
                 android:textStyle="bold"/>
 
 
         </android.support.v7.widget.CardView>
 
-
-
-
-        <!--radio  buttion-->
-
-        <LinearLayout
+        <!--vaeryfy Token address-->
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
 
-            <android.widget.RadioGroup
-                android:id="@+id/gender"
+            <TextView
+                android:id="@+id/tv_unique"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:text="fdtrthrtthrh"
+                android:padding="10dp"
+                android:gravity="center"
+                android:textStyle="bold"/>
 
-        <android.support.v7.widget.AppCompatRadioButton
-            android:id="@+id/radio"
+        </android.support.v7.widget.CardView>
+
+
+        <Button
+            android:id="@+id/btn_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            android:text="male"
-            android:checked="true"
-            style="@style/Base.Widget.AppCompat.CompoundButton.RadioButton"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:text="Send"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/White" />
 
-        <android.support.v7.widget.AppCompatRadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:padding="10dp"
-            android:text="female"
-            style="@style/Base.Widget.AppCompat.CompoundButton.RadioButton" />
-
-            </android.widget.RadioGroup>
-        </LinearLayout>
 
         <!--save button-->
 
-        <android.support.v7.widget.ButtonBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="20dp">
 
-            <Button
-                android:id="@+id/btn_save"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="save"
-                android:textColor="@color/White"
-                android:background="@color/colorPrimaryDark"/>
-        </android.support.v7.widget.ButtonBarLayout>
 
     </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

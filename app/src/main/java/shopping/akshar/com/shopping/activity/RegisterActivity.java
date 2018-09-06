@@ -121,6 +121,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Toast.makeText(RegisterActivity.this, "Registration Succesfully", Toast.LENGTH_SHORT).show();
 
+                        sharedPreferences = getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString(KEY_EMAIL,email);
                         editor.putString(KEY_USER_ID,auth.getUid());

@@ -19,21 +19,6 @@
         android:title="Logout"
         app:showAsAction="never" />
 
-    <item
-     android:id="@+id/edit"
-     android:orderInCategory="100"
-     android:title="Edit"
-     android:icon="@drawable/edit_icon"
-     app:showAsAction="always"/>
-
-  <item
-     android:id="@+id/save"
-     android:orderInCategory="100"
-     android:title="Save"
-     android:icon="@drawable/ic_check_black_24dp"
-     app:showAsAction="always"/>
-
-
 
     <item
         android:id="@+id/notification"

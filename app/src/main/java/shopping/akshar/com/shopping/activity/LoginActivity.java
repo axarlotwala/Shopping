@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -31,6 +32,7 @@ import shopping.akshar.com.shopping.utlis.PreferenseManager;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText login_email,login_password;
+    TextView newuser;
     Button btn_login;
     FirebaseAuth auth;
     FirebaseUser user;
@@ -50,10 +52,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         login_email = findViewById(R.id.login_email);
         login_password = findViewById(R.id.login_password);
         user = FirebaseAuth.getInstance().getCurrentUser();
+        newuser = findViewById(R.id.newuser);
 
-
-
-
+        newuser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent signupIntent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(signupIntent);
+                finish();
+            }
+        });
 
         btn_login = findViewById(R.id.btn_login);
 
@@ -68,6 +76,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(email != null){
             Intent i= new Intent(this,MainActivity.class);
             startActivity(i);
+            finish();
         }
     }
 
@@ -124,6 +133,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                                 Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+
                             }
 
 

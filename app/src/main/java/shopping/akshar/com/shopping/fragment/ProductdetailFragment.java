@@ -51,6 +51,7 @@ public class ProductdetailFragment extends Fragment {
     Button add_cart,buy;
     FirebaseUser firebaseUser;
     String URL = "http://192.168.0.103/shopping/cart.php";
+    String email;
 
     SharedPreferences sharedPreferences;
     private static final String PREF_NAME = "Shopping";
@@ -119,6 +120,7 @@ public class ProductdetailFragment extends Fragment {
                 @Override
                 public void onResponse(String response) {
 
+
                     Toast.makeText(getActivity(),"SuccessFully Add To Cart",Toast.LENGTH_SHORT).show();
 
                 }
@@ -134,14 +136,17 @@ public class ProductdetailFragment extends Fragment {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String,String> params = new HashMap<>();
-                    params.put("token",firebaseUser.getUid());  //Its a Reference Key Of User succesfull fetch
 
-                    Bundle bundle = getArguments();
-                    String product_id = bundle.getString("product_id");
-                    params.put("product_id",product_id);
+                            params.put("token", firebaseUser.getUid());  //Its a Reference Key Of User succesfull fetch
+                            Bundle bundle = getArguments();
+                            String product_id = bundle.getString("product_id");
+                            params.put("product_id", product_id);
 
-                    return params;
-                }
+
+                            return params;
+                    }
+
+
             };
 
             RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
