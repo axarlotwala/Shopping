@@ -46,7 +46,7 @@ public class Cartadapter extends RecyclerView.Adapter<Cartadapter.ViewHolder> {
     Context context;
     List<Cartmodel> cartmodels;
     String Delete_URL = "http://192.168.0.103/shopping/delete_cart.php";
-
+    String product_id;
 
 
     public Cartadapter(Context context, List<Cartmodel> cartmodels) {
@@ -65,16 +65,11 @@ public class Cartadapter extends RecyclerView.Adapter<Cartadapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
-       cartmodels.get(position).setCart_id(cartmodels.get(position).getCart_id());
+
         holder.cart_title.setText(cartmodels.get(position).getProduct_name());
         holder.cart_price.setText(cartmodels.get(position).getProduct_price());
         Glide.with(context).load(cartmodels.get(position).getCart_imageurl()).into(holder.cart_image);
-        holder.btn_remove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DeleteItem();
-            }
-        });
+
         holder.edit_quantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +77,10 @@ public class Cartadapter extends RecyclerView.Adapter<Cartadapter.ViewHolder> {
             }
         });
 
+        product_id = cartmodels.get(position).getProduct_id();
     }
+
+
 
     /*open dialogbox in edit quantity*/
 
@@ -92,6 +90,7 @@ public class Cartadapter extends RecyclerView.Adapter<Cartadapter.ViewHolder> {
         View view = LayoutInflater.from(context).inflate(R.layout.edittext_dialog,null);
         final EditText edit_dialog = view.findViewById(R.id.edit_dialog);
         Button dialog_btn = view.findViewById(R.id.dialog_btn);
+        builder.setTitle("Enter Quantity");
 
         dialog_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,34 +104,7 @@ public class Cartadapter extends RecyclerView.Adapter<Cartadapter.ViewHolder> {
         alertDialog.show();
     }
 
-    private void DeleteItem() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Delete_URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-
-            }
-        }){
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String,String> params = new HashMap<>();
-            //    params.put("",product_id)
-                return params;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        requestQueue.add(stringRequest);
-
-    }
 
 
     @Override
@@ -144,7 +116,6 @@ public class Cartadapter extends RecyclerView.Adapter<Cartadapter.ViewHolder> {
 
         ImageView cart_image;
         TextView  cart_title,cart_price;
-        Button btn_remove;
         ImageView edit_quantity;
 
 
@@ -154,7 +125,7 @@ public class Cartadapter extends RecyclerView.Adapter<Cartadapter.ViewHolder> {
             cart_image = itemView.findViewById(R.id.cart_image);
             cart_title = itemView.findViewById(R.id.cart_title);
             cart_price = itemView.findViewById(R.id.cart_price);
-            btn_remove = itemView.findViewById(R.id.btn_remove);
+
             edit_quantity = itemView.findViewById(R.id.edit_quantity);
 
 

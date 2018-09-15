@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,16 +53,13 @@ public class ProductdetailFragment extends Fragment {
     Button add_cart,buy;
     FirebaseUser firebaseUser;
     String URL = "http://192.168.0.103/shopping/cart.php";
-    String email;
+    private String Buy_Now = "http://192.168.0.103/shopping/purchaseNew.php";
+    TextView click_review;
 
     SharedPreferences sharedPreferences;
     private static final String PREF_NAME = "Shopping";
     private static final String KEY_EMAIL = "Email";
     private static final String KEY_USER_ID = "User UID";
-
-
-
-
 
 
     public ProductdetailFragment() {
@@ -81,6 +80,8 @@ public class ProductdetailFragment extends Fragment {
         detail_desc = view.findViewById(R.id.detail_desc);
         add_cart = view.findViewById(R.id.add_cart);
         buy = view.findViewById(R.id.buy);
+        click_review = view.findViewById(R.id.click_review);
+
         sharedPreferences = getContext().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
 
 
@@ -101,12 +102,69 @@ public class ProductdetailFragment extends Fragment {
             }
         });
 
+        click_review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ReviewsWatch();
+            }
+        });
+
         return view;
 
     }
 
+    private void ReviewsWatch() {
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.frame_main,new ViewReviewFragment());
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+    }
+
     private void buynow() {
-        // add payment method
+
+        if(firebaseUser.getUid() != null && p_id != null){
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, Buy_Now, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+                    Toast.makeText(getActivity(),response, Toast.LENGTH_SHORT).show();
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                    Toast.makeText(getActivity(),error.getMessage(),Toast.LENGTH_SHORT).show();
+
+                }
+            }){
+
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    HashMap<String,String> params = new HashMap<>();
+                    params.put("token",firebaseUser.getUid());
+
+                    Bundle bundle = getArguments();
+                    String product_id = bundle.getString("product_id");
+
+                    params.put("product_id",product_id);
+
+                    return params;
+                }
+            };
+
+            RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+            requestQueue.add(stringRequest);
+        }
+
+        else {
+
+            Toast.makeText(getActivity(),"Error", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // add data on cart table user id get successfull but product id not get
@@ -121,14 +179,14 @@ public class ProductdetailFragment extends Fragment {
                 public void onResponse(String response) {
 
 
-                    Toast.makeText(getActivity(),"SuccessFully Add To Cart",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"successfully Add Into Cart",Toast.LENGTH_SHORT).show();
 
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
 
-                    Toast.makeText(getActivity(),"error",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),error.getMessage(),Toast.LENGTH_SHORT).show();
 
                 }
             }){

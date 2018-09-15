@@ -4,6 +4,7 @@ package shopping.akshar.com.shopping.fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -13,8 +14,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import shopping.akshar.com.shopping.R;
 import shopping.akshar.com.shopping.pojo.Usermodel;
@@ -29,6 +41,9 @@ public class View_profileFragment extends Fragment {
     TextView tv_name,tv_phone,tv_addess,tv_pincode,tv_email;
     FirebaseAuth auth;
     FirebaseUser user;
+    String Profile_URL = "http://192.168.0.103/shopping/customer.php";
+
+    String name,phone,address,pincode;
 
     SharedPreferences preferences;
     private static final String PREF_NAME = "Shopping";
@@ -57,6 +72,7 @@ public class View_profileFragment extends Fragment {
         user = FirebaseAuth.getInstance().getCurrentUser();
 
 
+
         update = view.findViewById(R.id.update);
 
         update.setOnClickListener(new View.OnClickListener() {
@@ -78,8 +94,6 @@ public class View_profileFragment extends Fragment {
     }
 
     private void profileData() {
-
-
 
 
     }

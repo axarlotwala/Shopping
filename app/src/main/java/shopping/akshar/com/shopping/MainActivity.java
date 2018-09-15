@@ -3,14 +3,17 @@ package shopping.akshar.com.shopping;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -32,6 +35,8 @@ import shopping.akshar.com.shopping.fragment.CartFragment;
 import shopping.akshar.com.shopping.fragment.HomeFragment;
 import shopping.akshar.com.shopping.fragment.IncrementFragment;
 import shopping.akshar.com.shopping.fragment.ProfileFragment;
+import shopping.akshar.com.shopping.fragment.PurchaseHistroyFragment;
+import shopping.akshar.com.shopping.fragment.ReviewsFragment;
 import shopping.akshar.com.shopping.fragment.View_profileFragment;
 import shopping.akshar.com.shopping.utlis.PreferenseManager;
 
@@ -87,6 +92,30 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+        ExitDialog();
+    }
+
+    private void ExitDialog() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setTitle("Exit");
+        builder.setMessage("Are You Sure Want To Exit !");
+
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.create().show();
     }
 
     @Override
@@ -177,6 +206,12 @@ public class MainActivity extends AppCompatActivity
             ft.replace(R.id.frame_main,new CartFragment());
             ft.addToBackStack(null);
             ft.commit();
+        } else if (id == R.id.nav_purchase){
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = manager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_main,new PurchaseHistroyFragment());
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
         }
 
 

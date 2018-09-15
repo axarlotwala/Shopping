@@ -6,10 +6,14 @@
     tools:context=".fragment.ProductdetailFragment"
     android:background="@color/White">
 
-    <RelativeLayout
+
+
+    <!--<RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/White">
+
+
 
         <ImageButton
             android:id="@+id/favorite"
@@ -18,8 +22,9 @@
             android:layout_alignParentRight="true"
             android:background="@color/White"
             android:layout_marginRight="10dp"
+            android:layout_marginTop="30dp"
             android:src="@drawable/ic_favorite_gray_24dp" />
-    </RelativeLayout>
+    </RelativeLayout>-->
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -27,6 +32,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/click_review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Product Review"
+            android:drawablePadding="30dp"
+            android:background="@drawable/design"
+            android:drawableLeft="@drawable/ic_info_outline_black_24dp"/>
 
         <ImageView
             android:id="@+id/image"

@@ -72,16 +72,14 @@
                             android:textStyle="bold" />
                     </LinearLayout>
 
-                    <!--delete button-->
-
                     <Button
-                        android:id="@+id/btn_remove"
+                        android:id="@+id/btn_buy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:layout_marginTop="20dp"
                         android:background="@color/cardview_shadow_start_color"
-                        android:text="remove" />
+                        android:text="Buy Now" />
+
                 </LinearLayout>
 
 
@@ -102,11 +100,20 @@
                         android:layout_marginTop="10dp"
                         android:layout_margin="10dp" />
 
+
+
+                    <TextView
+                        android:id="@+id/tv_quantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/edit_quantity"
+                        android:gravity="right"
+                        android:text="5"
+                        android:layout_margin="10dp"/>
+
                 </RelativeLayout>
 
-
             </LinearLayout>
-
 
 
         </LinearLayout>
