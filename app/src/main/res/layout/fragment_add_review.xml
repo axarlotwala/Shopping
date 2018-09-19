@@ -23,6 +23,7 @@
             android:layout_marginTop="10dp"
             android:src="@drawable/bags" />
 
+
         <TextView
             android:id="@+id/r_productName"
             android:layout_width="match_parent"

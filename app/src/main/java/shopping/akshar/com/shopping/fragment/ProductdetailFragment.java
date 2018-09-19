@@ -144,7 +144,7 @@ public class ProductdetailFragment extends Fragment {
             }){
 
                 @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
+                protected Map<String, String> getParams() {
                     HashMap<String,String> params = new HashMap<>();
                     params.put("token",firebaseUser.getUid());
 
@@ -192,7 +192,7 @@ public class ProductdetailFragment extends Fragment {
             }){
 
                 @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
+                protected Map<String, String> getParams() {
                     Map<String,String> params = new HashMap<>();
 
                             params.put("token", firebaseUser.getUid());  //Its a Reference Key Of User succesfull fetch

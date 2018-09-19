@@ -1,10 +1,11 @@
 package shopping.akshar.com.shopping.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,19 +46,21 @@ public class Purchaseadaptor extends RecyclerView.Adapter<Purchaseadaptor.ViewHo
 
         Glide.with(context).load(productmodels.get(position).getProduct_image()).into(holder.purchase_image);
         holder.purchase_name.setText(productmodels.get(position).getProduct_name());
-        holder.reviews.setOnClickListener(new View.OnClickListener() {
+        holder.purchase_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Add Review", Toast.LENGTH_SHORT).show();
-
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                Fragment fragment = new AddReviewFragment();
-                activity.getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.frame_main,fragment)
-                        .addToBackStack(null)
-                        .commit();
+                Fragment myFragment = new AddReviewFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_main, myFragment).addToBackStack(null).commit();
 
+                Bundle bundle = new Bundle();
+                bundle.putString("product_id",productmodels.get(position).getProduct_id());
+                bundle.putString("product_name",productmodels.get(position).getProduct_name());
+                bundle.putString("product_image",productmodels.get(position).getProduct_image());
+
+                Toast.makeText(activity, ""+productmodels.get(position).getProduct_id(), Toast.LENGTH_SHORT).show();
+
+                myFragment.setArguments(bundle);
             }
         });
 
@@ -73,14 +76,15 @@ public class Purchaseadaptor extends RecyclerView.Adapter<Purchaseadaptor.ViewHo
 
         ImageView purchase_image;
         TextView purchase_name;
-        Button reviews;
+        CardView purchase_card;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             purchase_image = itemView.findViewById(R.id.purchase_image);
             purchase_name = itemView.findViewById(R.id.purchase_name);
-            reviews = itemView.findViewById(R.id.reviews);
+            purchase_card = itemView.findViewById(R.id.purchase_card);
+
         }
 
 

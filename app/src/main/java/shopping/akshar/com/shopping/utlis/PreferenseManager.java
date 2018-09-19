@@ -47,10 +47,7 @@ public class PreferenseManager {
 
     public Boolean IsUserLoggedIn(){
         SharedPreferences sharedPreferences = mContext.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
-        if (sharedPreferences.getString(KEY_EMAIL,null)!= null) {
-            return true;
-        }
-        return false;
+        return sharedPreferences.getString(KEY_EMAIL, null) != null;
     }
 
     public Boolean IsLogout(){

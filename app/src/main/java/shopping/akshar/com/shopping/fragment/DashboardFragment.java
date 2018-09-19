@@ -8,12 +8,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -33,10 +38,11 @@ import shopping.akshar.com.shopping.pojo.Dashboardmodel;
  */
 public class DashboardFragment extends Fragment {
 
-    TextView brand_label;
+    TextView brand_label,result;
     RecyclerView brand_dashboard;
     List<Dashboardmodel> dashboardmodels;
     String Dashboard_url = "http://192.168.0.103/shopping/brand.php";
+    //String Search_Url = "http://192.168.0.103/shopping/brandSearch.php?brand_name="+search+"";
 
 
 
@@ -57,8 +63,11 @@ public class DashboardFragment extends Fragment {
         GridLayoutManager manager = new GridLayoutManager(getActivity(),3);
         brand_dashboard.setLayoutManager(manager);
 
+
         return view;
     }
+
+
 
     private void view_banner() {
 

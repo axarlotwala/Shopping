@@ -86,7 +86,7 @@ public class IncrementFragment extends Fragment {
         }){
 
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();
                 params.put("token",userid);
 

@@ -150,7 +150,7 @@ public class ProfileFragment extends Fragment {
         }){
 
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();
                 params.put("token",firebaseUser.getUid());
                 params.put("cust_name",name);
