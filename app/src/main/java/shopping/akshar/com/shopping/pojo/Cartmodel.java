@@ -10,6 +10,7 @@ public class Cartmodel {
     private String cart_imageurl;
     private String cart_date;
     private String cart_qty;
+    private String cust_email;
 
     public Cartmodel() {
     }
@@ -76,5 +77,13 @@ public class Cartmodel {
 
     public void setCart_qty(String cart_qty) {
         this.cart_qty = cart_qty;
+    }
+
+    public String getCust_email() {
+        return cust_email;
+    }
+
+    public void setCust_email(String cust_email) {
+        this.cust_email = cust_email;
     }
 }

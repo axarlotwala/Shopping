@@ -24,6 +24,20 @@
             android:title="Purchase Histry"
             android:icon="@drawable/ic_star_half_black_24dp"/>
 
+        <item
+            android:id="@+id/nav_graid"
+            android:title="Dashboard"
+            android:icon="@drawable/ic_dashboard_black_24dp"/>
+
+        <item
+            android:id="@+id/nav_upload"
+            android:title="Upload Services"
+            android:icon="@drawable/ic_arrow_upward_black_24dp"/>
+
+
+
+
+
     </group>
 
 

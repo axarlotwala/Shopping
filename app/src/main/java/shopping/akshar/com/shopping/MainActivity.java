@@ -32,11 +32,13 @@ import shopping.akshar.com.shopping.activity.AuthenticationActivity;
 import shopping.akshar.com.shopping.activity.LoginActivity;
 import shopping.akshar.com.shopping.activity.RegisterActivity;
 import shopping.akshar.com.shopping.fragment.CartFragment;
+import shopping.akshar.com.shopping.fragment.GraidFragment;
 import shopping.akshar.com.shopping.fragment.HomeFragment;
 import shopping.akshar.com.shopping.fragment.IncrementFragment;
 import shopping.akshar.com.shopping.fragment.ProfileFragment;
 import shopping.akshar.com.shopping.fragment.PurchaseHistroyFragment;
 import shopping.akshar.com.shopping.fragment.ReviewsFragment;
+import shopping.akshar.com.shopping.fragment.UploadFragment;
 import shopping.akshar.com.shopping.fragment.View_profileFragment;
 import shopping.akshar.com.shopping.utlis.PreferenseManager;
 
@@ -191,12 +193,14 @@ public class MainActivity extends AppCompatActivity
             ft.replace(R.id.frame_main,new HomeFragment());
             ft.addToBackStack(null);
             ft.commit();
+
         } else if (id == R.id.nav_profile) {
             android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction ft = manager.beginTransaction();
             ft.replace(R.id.frame_main,new View_profileFragment());
             ft.addToBackStack(null);
             ft.commit();
+
         } else if (id == R.id.nav_cart){
             android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction ft = manager.beginTransaction();
@@ -209,6 +213,20 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.frame_main,new PurchaseHistroyFragment());
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+
+        } else if (id == R.id.nav_graid){
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.replace(R.id.frame_main,new GraidFragment());
+            transaction.addToBackStack(null);
+            transaction.commit();
+
+        } else if (id == R.id.nav_upload){
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.frame_main,new UploadFragment());
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
 
 

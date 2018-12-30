@@ -137,10 +137,10 @@ public class CartFragment extends Fragment {
                     for (int i = 0; i < response.length(); i++) {
                         try {
                             sharedPreferences = getContext().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-                            sharedPreferences.getString(KEY_USER_ID,user.getUid());
 
                             jsonObject = response.getJSONObject(i);
 
+                                sharedPreferences.getString(KEY_EMAIL,null);
                                 Cartmodel cartmodel = new Cartmodel();
                                 cartmodel.setCart_id(jsonObject.getString("cart_id"));
                                 cartmodel.setToken(jsonObject.getString("token"));
